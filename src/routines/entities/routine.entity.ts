@@ -23,8 +23,6 @@ export class RoutineEntity {
     @Column({type: 'boolean'})
     completed: boolean
 
-    
-
     @Column({type: 'varchar', length: 255, default: '' })
     notes: string
 
