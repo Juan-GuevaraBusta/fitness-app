@@ -34,5 +34,7 @@ export class ProfileEntity {
     @JoinColumn({name: 'user_id'})
     user: userEntity
 
-    constructor() {}
+    constructor(partial: Partial<ProfileEntity> = {}) {
+        Object.assign(this, partial);
+    }
 }

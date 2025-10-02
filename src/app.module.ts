@@ -7,7 +7,6 @@ import { UsersModule } from './users/users.module';
 import { ExercisesModule } from './exercises/exercises.module';
 import { RoutinesModule } from './routines/routines.module';
 import { ProfilesModule } from './profiles/profiles.module';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [

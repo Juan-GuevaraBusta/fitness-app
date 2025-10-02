@@ -40,8 +40,9 @@ export class userEntity{
     routines: RoutineEntity[]
 
     /*Constructor de la entidad, permite inicializar una instancia con valores iniciales*/
-
-    constructor() {}
+    constructor(partial: Partial<userEntity> = {}) {
+        Object.assign(this, partial);
+    }
 
     async hashPassword(): Promise<void>{
         const salt = randomBytes(16).toString('hex')
