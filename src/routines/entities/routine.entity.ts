@@ -17,7 +17,7 @@ export class RoutineEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({type: 'enum', enum: dayOfWeek})
+    @Column({type: 'varchar', enum: dayOfWeek})
     dayOfWeek: dayOfWeek
 
     @Column({type: 'boolean'})

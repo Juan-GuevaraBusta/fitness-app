@@ -21,10 +21,10 @@ export class ProfileEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({type: 'enum', enum: profileGoal})
+    @Column({type: 'varchar', enum: profileGoal})
     goal: profileGoal
 
-    @Column({type: 'enum', enum: activityLevel})
+    @Column({type: 'varchar', enum: activityLevel})
     activityLevel: activityLevel
 
     @Column({type: 'int'})

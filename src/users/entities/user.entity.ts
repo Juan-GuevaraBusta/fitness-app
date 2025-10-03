@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { RoutineEntity } from '../../routines/entities/routine.entity';
-import {scrypt, randomBytes} from 'crypto'
-import { promisify } from 'util'
+import * as crypto from 'crypto';
+import { promisify } from 'util';
 
-const scryptAsync = promisify(scrypt)
+const scryptAsync = promisify(crypto.scrypt);
 
 @Entity('users')
 export class userEntity{
@@ -45,15 +45,15 @@ export class userEntity{
     }
 
     async hashPassword(): Promise<void>{
-        const salt = randomBytes(16).toString('hex')
-        const hashedPassword = await scryptAsync(this.password, salt, 64) as Buffer
-        this.password = `${salt}.${hashedPassword.toString('hex')}`
+        const salt = crypto.randomBytes(16).toString('hex');
+        const hashedPassword = await scryptAsync(this.password, salt, 64) as Buffer;
+        this.password = `${salt}.${hashedPassword.toString('hex')}`;
     }
 
     async validatePassword(password: string): Promise<boolean>{
-        const [salt, hashedPassword] = this.password.split('.')
-        const hashedBuffer = await scryptAsync(password, salt, 64) as Buffer
-        return hashedBuffer.toString('hex') == hashedPassword;
+        const [salt, hashedPassword] = this.password.split('.');
+        const hashedBuffer = await scryptAsync(password, salt, 64) as Buffer;
+        return hashedBuffer.toString('hex') === hashedPassword;
     }
 
 

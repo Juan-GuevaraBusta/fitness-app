@@ -12,7 +12,6 @@ export class CreateUserDto {
 
     @IsString({message: 'La contraseña debe ser un texto'})
     @IsNotEmpty({message: 'La contraseña es requerida'})
-    @Min(8, {message: 'La contraseña debe tener al menos 8 caracteres'})
     password:string
 
     @IsNumber({}, {message: 'La edad debe ser un numero'})
